@@ -1,17 +1,69 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Mis facturas
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Facturas cerradas</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-grid>
+        <ion-row>
+            <h1>Facturas cerradas</h1>
+        </ion-row>
+    </ion-grid>
+    <ion-title size="medium">{{today | date}}</ion-title> -->
+    <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="arrow-up-circle"></ion-icon>
+        </ion-fab-button>
+    </ion-fab> -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="share"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+            <ion-fab-button (click)="buscarFactura('MEDITOTAL S.A.')" data-desc="Meditotal">
+                <ion-icon name="business-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="buscarFactura('LEBENFARMA S.A.')" data-desc="Lebenfarma">
+                <ion-icon name="business-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="buscarFactura('FARMALIGHT S.A.')" data-desc="Farmalight">
+                <ion-icon name="business-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="buscarFactura('LABORATORIOS DANIVET S.A.')" data-desc="Danivet">
+                <ion-icon name="business-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="buscarFactura('LABORATORIOS ANYUPA S.A.')" data-desc="Anyupa">
+                <ion-icon name="business-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+    </ion-fab>
+    <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+        <ion-fab-button (click)="abrirConfiguracion()">
+            <ion-icon name="construct-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab> -->
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+        <ion-fab-button (click)="logout()">
+            <ion-icon name="log-out-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-list>
+        <ion-item *ngFor="let factura of facturas">
+            <ion-label>
+                <h2>{{ factura.secuencial }}</h2>
+                <p>{{factura.empresa}}</p>
+            </ion-label>
+            <ion-badge color="{{(factura.estado|estados).color}}" slot="end">{{(factura.estado|estados).texto}}</ion-badge>
+        </ion-item>
+    </ion-list>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>

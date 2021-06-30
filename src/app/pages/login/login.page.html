@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Horus</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form (ngSubmit)="login()" [formGroup]="credentials">
+        <div class="input-group">
+            <ion-item>
+                <ion-input type="Username" placeholder="Username" formControlName="Username"></ion-input>
+            </ion-item>
+            <!-- <div *ngIf="(Username.dirty || Username.touched) && Username.errors" class="errors">
+                <span *ngIf="Username.errors?.required">El usuario es obligatorio</span>
+                <span *ngIf="Username.errors?.minlength">Usuario inválido</span>
+            </div> -->
+            <ion-item>
+                <ion-input type="password" placeholder="Password" formControlName="Password"></ion-input>
+            </ion-item>
+            <!-- <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+                <span *ngIf="password.errors?.required">Password es obligatorio</span>
+                <span *ngIf="password.errors?.minlength">Password debe contener al menos 3 caracteres</span>
+            </div> -->
+        </div>
+
+        <ion-button type="submit" expand="block" [disabled]="!credentials.valid">Ingresar</ion-button>
+        <!-- <ion-button type="button" expand="block" color="light" fill="clear">Not yet a member? Sign up!
+        </ion-button> -->
+
+        <!-- <ion-button type="button" expand="block" color="tertiary">
+            <ion-icon name="logo-google" slot="start"></ion-icon>
+            Sign in with Google
+        </ion-button>
+        <ion-button type="button" expand="block" color="tertiary">
+            <ion-icon name="logo-apple" slot="start"></ion-icon>
+            Sign in with Apple
+        </ion-button> -->
+    </form>
+</ion-content>

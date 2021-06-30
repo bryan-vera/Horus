@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Buscar factura</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col text-center>
+                <ion-searchbar inputmode="numeric" animated (ionInput)="filterList($event)" (ionClear)="onCancel($event)"></ion-searchbar>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-list lines="none">
+        <ion-item>
+            <ion-label (click)="accederPicking()">
+                <ion-text color="primary">
+                    <h3>{{ facturas.Secuencial }}</h3>
+                </ion-text>
+                <h2>{{ facturas.Cliente }} </h2>
+                <p>{{facturas.Fecha_factura}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+    <!-- <ion-list lines="none">
+        <ion-item *ngFor="let facturaItem of facturas">
+            <ion-label class="ion-text-wrap">
+                <ion-text color="primary">
+                    <h3>{{ facturaItem.Secuencial }}</h3>
+                </ion-text>
+                <p>{{ facturaItem.Cliente }} -- {{ facturaItem.Fecha_factura }}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list> -->
+</ion-content>

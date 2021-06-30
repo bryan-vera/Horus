@@ -1,17 +1,59 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Horus
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" padding>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Detalle</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+    <ion-card *ngIf="detalles">
+        <ion-card-header>
+
+            <ion-card-subtitle style="font-weight: 700;">{{detalles.Empresa}}</ion-card-subtitle>
+            <ion-card-title>{{detalles.Secuencial}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-label>
+                        <span style="font-weight: 700;">Cliente:</span> {{detalles.Cliente}}
+                    </ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        <span style="font-weight: 700;">Fecha:</span> {{detalles.Fecha_factura }}
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+            <!-- {{detalles.CodigoEstado}} -->
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-content>
+            <ion-card-header>
+                <ion-card-title style="font-weight: 700;">Productos</ion-card-title>
+            </ion-card-header>
+            <ion-list *ngIf="detalles">
+                <ion-item *ngFor="let detalle of detalles.DetalleFactura| ordenar:'detalle.Producto' ">
+                    <ion-icon name="cube-outline" slot="start"></ion-icon>
+                    <ion-label>
+                        <h2>{{detalle.Producto}}</h2>
+                        <p>Cantidad: {{detalle.Cantidad}}</p>
+                    </ion-label>
+                    <!-- <ion-checkbox slot="end" [(ngModel)]="detalle.isChecked"></ion-checkbox> -->
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
 </ion-content>
+<ion-footer *ngIf="codigoEstado<4">
+    <ion-button expand="block" (click)="presentaAlerta()" tappable>{{estadoControl}}</ion-button>
+</ion-footer>

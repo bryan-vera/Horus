@@ -1,0 +1,10 @@
+ion-content {
+    // --background: #0081ca;
+    --background: var(--bullet-background-active);
+}
+
+ion-slides {
+    height: 100%;
+    --bullet-background-active: #fff;
+    --bullet-background: #000;
+}

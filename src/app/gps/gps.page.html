@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Localización</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid fixed>
+        <ion-row class="ion-align-items-center">
+            <ion-col size="6">
+            </ion-col>
+            <ion-col size="6">
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+            <ion-col size="3">
+            </ion-col>
+            <ion-col size="6">
+                <ion-button (click)="presentActionSheet()" expand="block" shape="round">
+                    Opciones
+                </ion-button>
+            </ion-col>
+            <ion-col size="3">
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>Longitud</ion-col>
+            <ion-col> {{locationCordinates.longitude}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>Altitud</ion-col>
+            <ion-col>{{locationCordinates.latitude}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>Precisión</ion-col>
+            <ion-col>{{locationCordinates.accuracy}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>Timestamp</ion-col>
+            <ion-col>{{locationCordinates.time | date:'medium'}}</ion-col>
+        </ion-row>
+
+    </ion-grid>
+    <!-- <ion-grid>
+        <ion-row>
+            <ion-col width-50 text-center>Off</ion-col>
+            <ion-col width-50 text-center>
+                <ion-item>
+                    <ion-toggle [checked]="false" color="secondary"></ion-toggle>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-grid> -->
+    <!-- 
+            <ion-button (click)="onClick()" expand="block">
+                Iniciar
+            </ion-button> -->
+</ion-content>

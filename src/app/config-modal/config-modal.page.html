@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>config_modal</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label>
+            <ion-label>Ingresar clave</ion-label>
+            <ion-input type="number" [(ngModel)]="password_i"></ion-input>
+        </ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label>
+            <ion-label>Ingresar ID</ion-label>
+            <ion-input type="number" [(ngModel)]="id_telefono"></ion-input>
+        </ion-label>
+    </ion-item>
+
+    <ion-button (click)="guardarConfiguracion()" expand="block" fill="clear" shape="round">
+        Guardar
+    </ion-button>
+</ion-content>
