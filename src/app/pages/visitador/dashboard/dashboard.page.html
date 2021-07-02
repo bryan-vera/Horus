@@ -1,0 +1,40 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-title>Mi dashboard</ion-title>
+    </ion-toolbar>
+</ion-header> -->
+<ion-content class="ion-padding">
+    <ion-refresher slot="fixed" slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-grid fixed>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size="6">
+                <h1>Dashboard</h1>
+            </ion-col>
+            <!-- <ion-col size="12"></ion-col> -->
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid fixed>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size="9">
+                <circle-progress [titleFontSize]="35" [percent]="p_total" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300" [showSubtitle]="true" [subtitle]="'Total'"
+                    [subtitleFontSize]="25"></circle-progress>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size="9">
+
+                <circle-progress [titleFontSize]="35" [percent]="p_ventas" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8" [outerStrokeColor]="'#145250'" [innerStrokeColor]="'#31c4bf'" [animation]="true" [animationDuration]="300" [showSubtitle]="true" [subtitle]="'Ventas'"
+                    [subtitleFontSize]="25"></circle-progress>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size="9">
+                <circle-progress [titleFontSize]="35" [percent]="p_cobros" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8" [outerStrokeColor]="'#FAA00F'" [innerStrokeColor]="'#B47004'" [animation]="true" [animationDuration]="300" [showSubtitle]="true" [subtitle]="'Cobros'"
+                    [subtitleFontSize]="25"></circle-progress>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

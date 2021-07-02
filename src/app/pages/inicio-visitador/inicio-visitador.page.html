@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Horus</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-content>
+            <p>Usuario actual: {{ user | async | json }}</p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="full" routerLink="/secret">
+        Open secret page (Admin only)</ion-button>
+</ion-content>

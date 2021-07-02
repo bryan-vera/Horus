@@ -48,6 +48,12 @@ export class HttpService {
     , {responseType: 'json'});
   }
 
+  obtenerPresupuesto(id_usuario:any){
+    return this.http
+    .get('http://'+this.ip_server+':8069/Visitador/MetaPresupuesto?id_visitador='+id_usuario
+    , {responseType: 'json'});
+  }
+
   enviarDatos(idfactura: any,
       codigoEstado:any,
       secuencial:any,

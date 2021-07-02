@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Perfil</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-grid fixed>
+        <ion-row class="ion-align-items-center">
+            <ion-col size="6">
+            </ion-col>
+            <ion-col size="6">
+            </ion-col>
+        </ion-row>
+        <!-- <ion-row class="ion-align-items-center">
+            <ion-col size="3">
+            </ion-col>
+            <ion-col size="6">
+                <ion-button (click)="presentActionSheet()" expand="block" shape="round">
+                    Opciones
+                </ion-button>
+            </ion-col>
+            <ion-col size="3">
+            </ion-col>
+        </ion-row> -->
+        <ion-row class="ion-align-items-center">
+            <ion-col size="12">
+                <ion-button (click)="logout()" expand="block" shape="round">
+                    Cerrar sesión
+                </ion-button>
+            </ion-col>
+        </ion-row>
+
+        <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+            <ion-fab-button (click)="logout()">
+                <ion-icon name="log-out-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-fab> -->
+        <!-- <ion-row>
+            <ion-col>Longitud</ion-col>
+            <ion-col> {{locationCordinates.longitude}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>Altitud</ion-col>
+            <ion-col>{{locationCordinates.latitude}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>Precisión</ion-col>
+            <ion-col>{{locationCordinates.accuracy}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>Timestamp</ion-col>
+            <ion-col>{{locationCordinates.time | date:'medium'}}</ion-col>
+        </ion-row> -->
+
+    </ion-grid>
+</ion-content>

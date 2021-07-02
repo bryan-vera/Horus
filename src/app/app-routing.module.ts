@@ -38,6 +38,22 @@ const routes: Routes = [
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
+  },
+  {
+    path: 'inicio-visitador',
+    loadChildren: () => import('./pages/inicio-visitador/inicio-visitador.module').then( m => m.InicioVisitadorPageModule),
+    canActivate: [AuthGuard],
+    data:{
+      role: 'VISITADOR'
+    }
+  },
+  {
+    path: 'tablinks',
+    loadChildren: () => import('./pages/visitador/tablinks/tablinks.module').then( m => m.TablinksPageModule),
+    // canActivate: [AuthGuard],
+    // data:{
+    //   role: 'VISITADOR'
+    // }
   }
 ];
 @NgModule({

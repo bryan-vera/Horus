@@ -68,6 +68,7 @@
         "cordova-sqlite-storage": "^6.0.0",
         "cordova.plugins.diagnostic": "^6.0.3",
         "jetifier": "^2.0.0",
+        "ng-circle-progress": "^1.6.0",
         "phonegap-plugin-barcodescanner": "^8.1.0",
         "rxjs": "~6.6.0",
         "tslib": "^2.0.0",

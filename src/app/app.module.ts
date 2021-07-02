@@ -28,7 +28,10 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { StorageService } from './services/storage.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
+
 import { Uid } from '@ionic-native/uid/ngx';
+
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,7 +39,17 @@ import { Uid } from '@ionic-native/uid/ngx';
   imports: [
     BrowserModule, IonicModule.forRoot(), 
     AppRoutingModule,HttpClientModule,
-    IonicStorageModule.forRoot()],
+    IonicStorageModule.forRoot(),
+  // Specify ng-circle-progress as an import
+  NgCircleProgressModule.forRoot({
+    // set defaults here
+    radius: 100,
+    outerStrokeWidth: 16,
+    innerStrokeWidth: 8,
+    outerStrokeColor: "#78C000",
+    innerStrokeColor: "#C7E596",
+    animationDuration: 300,
+  })],
   providers: [
     BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
