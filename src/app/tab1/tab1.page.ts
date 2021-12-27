@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { NavigationEnd, NavigationExtras, Router } from '@angular/router';
+import { ModalController, NavController } from '@ionic/angular';
 import { HttpService } from '../services/http.service';
 import { ModalPage } from '../modal/modal.page';
 import { ConfigModalPage } from '../config-modal/config-modal.page';
@@ -25,7 +25,8 @@ export class Tab1Page {
     private router: Router,
     public modalCtrl: ModalController,
     private store: Storage,
-    private authService: AuthenticationService) {    
+    private authService: AuthenticationService,
+    private navCtrl:  NavController) {    
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
         this.MostrarMisFacturas();
@@ -63,6 +64,15 @@ export class Tab1Page {
     })
     
   }
+
+  async VerDetalle(claveAcceso){
+    console.log("Accedediendo a " +  claveAcceso); 
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'claveAcceso': claveAcceso }
+    };
+    this.navCtrl.navigateForward(['/tabs/tab3'], navigationExtras);
+  }
+
 
   async buscarFactura(empresa) {
     console.log(empresa);

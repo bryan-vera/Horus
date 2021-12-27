@@ -27,18 +27,18 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 // import { Storage }
 import { StorageService } from './services/storage.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
-
-
 import { Uid } from '@ionic-native/uid/ngx';
-
 import { NgCircleProgressModule } from 'ng-circle-progress';
-
+import { EstadosPedidoPipe } from './estados-pedido.pipe';
+// import { ExpandableComponent } from './components/expandable/expandable.component';
+import { ComponentsModule } from './components/components.module';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, EstadosPedidoPipe],
   entryComponents: [],
   imports: [
     BrowserModule, IonicModule.forRoot(), 
     AppRoutingModule,HttpClientModule,
+    ComponentsModule,
     IonicStorageModule.forRoot(),
   // Specify ng-circle-progress as an import
   NgCircleProgressModule.forRoot({

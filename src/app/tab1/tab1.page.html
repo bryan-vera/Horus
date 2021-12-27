@@ -43,6 +43,9 @@
             <ion-fab-button (click)="buscarFactura('LABORATORIOS ANYUPA S.A.')" data-desc="Anyupa">
                 <ion-icon name="business-outline"></ion-icon>
             </ion-fab-button>
+            <ion-fab-button (click)="buscarFactura('LABOVIDA S.A.')" data-desc="Labovida">
+                <ion-icon name="business-outline"></ion-icon>
+            </ion-fab-button>
         </ion-fab-list>
     </ion-fab>
     <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
@@ -57,7 +60,7 @@
     </ion-fab>
     <ion-list>
         <ion-item *ngFor="let factura of facturas">
-            <ion-label>
+            <ion-label (click)="VerDetalle(factura.clave_acceso)">
                 <h2>{{ factura.secuencial }}</h2>
                 <p>{{factura.empresa}}</p>
             </ion-label>

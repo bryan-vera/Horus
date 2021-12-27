@@ -54,7 +54,8 @@ const routes: Routes = [
     // data:{
     //   role: 'VISITADOR'
     // }
-  }
+  },
+  
 ];
 @NgModule({
   imports: [

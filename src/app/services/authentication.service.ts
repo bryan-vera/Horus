@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
-import { map, tap, switchMap } from 'rxjs/operators';
-import { BehaviorSubject, from, Observable, Subject } from 'rxjs';
+import { map, tap, switchMap, catchError } from 'rxjs/operators';
+import { BehaviorSubject,throwError, from, Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 const TOKEN_KEY = 'mi-token';
@@ -78,6 +78,8 @@ export class AuthenticationService {
               indicador_vendedor: false
             };       
           }
+        } else {
+          return null;
         }
         return userObj;
       })
@@ -86,8 +88,14 @@ export class AuthenticationService {
         this.isAuthenticated.next(true);
         this.usuarioActual.next(userObj);
       })
+      ,
+      catchError(error => {
+        if (error.status === 401 || error.status === 403) {
+          // handle error
+        }
+        return throwError(error);
+      })
     )
-    
   }
 
   logout(): Promise<void> {

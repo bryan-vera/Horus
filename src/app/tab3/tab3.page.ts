@@ -14,6 +14,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx'
 })
 export class Tab3Page {
   claveAcceso: string;
+  id_factura: any;
   detalles: any;
   estadoControl: string;
   resultado: any;
@@ -98,37 +99,49 @@ export class Tab3Page {
 
   public MostrarPicking() {
     this.route.queryParams.subscribe(params => {
-      this.claveAcceso = params["claveAcceso"];
+      if(params["claveAcceso"] == null){
+        this.claveAcceso="";
+        this.id_factura = params["id_factura"];
+      } else {
+        this.claveAcceso=params["claveAcceso"];
+        this.id_factura = "";
+      }
+      // this.claveAcceso = params["claveAcceso"];
       console.log(this.claveAcceso);
+      console.log(this.id_factura);
     });
-    this.http.cargarPicking(this.claveAcceso)
-      .subscribe(
-        (res: any) => {
-          this.detalles = res;
-          this.codigoEstado=res.CodigoEstado;
-          switch (this.detalles.CodigoEstado) {
-            case 0:
-              this.estadoControl = "Iniciar picking";
-              console.log("Iniciar picking");
-              break;
-            case 1:
-              this.estadoControl = "Cerrar picking";
-              console.log("Cerrar picking");
-              break;
-            case 2:
-              this.estadoControl = "Iniciar despacho";
-              console.log("Iniciar despacho");
-              break;
-            case 3:
-              this.estadoControl = "Cerrar despacho";
-              console.log("Cerrar despacho");
-              break;
+    // if(this.claveAcceso!=null){
+      this.http.cargarPicking(this.claveAcceso,this.id_factura)
+        .subscribe(
+          (res: any) => {
+            this.detalles = res;
+            this.codigoEstado=res.CodigoEstado;
+            switch (this.detalles.CodigoEstado) {
+              case 0:
+                this.estadoControl = "Iniciar picking";
+                console.log("Iniciar picking");
+                break;
+              case 1:
+                this.estadoControl = "Cerrar picking";
+                console.log("Cerrar picking");
+                break;
+              case 2:
+                this.estadoControl = "Iniciar despacho";
+                console.log("Iniciar despacho");
+                break;
+              case 3:
+                this.estadoControl = "Cerrar despacho";
+                console.log("Cerrar despacho");
+                break;
+            }
+          },
+          (error) => {
+            console.error(error);
           }
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+        );
+    // } else { 
+    //   console.log("El id de la factura es: " + this.id_factura);
+    // }
   }
 
   // public MostrarDetalle() {

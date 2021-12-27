@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Pedidos</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12">
+                <ion-searchbar debounce="500" placeholder="Buscar" animated=true animated (ionInput)="filtrarLista($event)" (ionClear)="onCancel($event)"></ion-searchbar>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-list>
+        <ion-virtual-scroll [items]="pedidos" approxItemHeight="320px">
+            <ion-item *virtualItem='let item'>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>{{item.numero}}</ion-card-subtitle>
+                        <ion-card-title>{{item.nombre_comercial}}</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <ion-row>
+                            <ion-col size="6">
+                                <h2>Valor:</h2>
+                                <p>{{item.valor_pedido|number:'.2-2'}}</p>
+                            </ion-col>
+                            <ion-col size="6">
+                                <h2>Estado:</h2>
+                                <p>{{item.estado}}</p>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size="6">
+                                <h2>F. creación:</h2>
+                                <p>
+                                    {{item.fecha_creacion_pedido}}</p>
+                            </ion-col>
+                            <ion-col size="6" *ngIf="item.fecha_autorizacion_pedido">
+                                <h2>F. autorización:</h2>
+                                <p>{{item.fecha_autorizacion_pedido}}</p>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row *ngIf="item.secuencial_factura">
+                            <ion-col size="12">
+                                <h2>Factura:</h2>
+                                <p>
+                                    {{item.secuencial_factura}}</p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+            </ion-item>
+        </ion-virtual-scroll>
+    </ion-list>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando información...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>
