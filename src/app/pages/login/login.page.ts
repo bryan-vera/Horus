@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './../../services/authentication.service';
-import { AlertController, LoadingController } from '@ionic/angular';
-
+import { AlertController, LoadingController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-login',
@@ -50,7 +49,19 @@ export class LoginPage implements OnInit {
             });
             await alert.present();
           }
-        });
+        },
+        async err=>{
+          await loading.dismiss();
+            const alert = await this.alertController.create({
+              header: 'Login incorrecto',
+              message: err.error.error,
+              buttons: ['OK'],
+            });
+            await alert.present();
+        }
+        
+        
+        );
   }
 
   // Easy access for form fields

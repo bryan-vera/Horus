@@ -35,6 +35,14 @@ const routes: Routes = [
       }
     },
     {
+      path: 'pedidos',
+      loadChildren: () => import('../pedidos/pedidos.module').then( m => m.PedidosPageModule)
+    },
+    {
+      path: 'cobros',
+      loadChildren: () => import('../cobros/cobros.module').then( m => m.CobrosPageModule)
+    },
+    {
       path: '',
       redirectTo: 'tablinks/dashboard',
       pathMatch: 'full'

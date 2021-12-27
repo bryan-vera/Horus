@@ -28,9 +28,10 @@ export class HttpService {
         , { responseType: 'json' });
   }
 
-  cargarPicking(claveAcceso: string) {
+  cargarPicking(claveAcceso: string,IdFactura: string) {
     return this.http
       .get('http://'+this.ip_server+':8069/Picking/LecturaPicking?ClaveAcceso=' + claveAcceso
+      +'&CodigoFactura='+IdFactura
         , { responseType: 'json' });
   }
 
@@ -45,6 +46,18 @@ export class HttpService {
   cargarMisFacturas(id_usuario:any){
     return this.http
     .get('http://'+this.ip_server+':8069/Picking/MisFacturas?id_usuario='+id_usuario
+    , {responseType: 'json'});
+  }
+
+  cargarMisPedidos(id_usuario:any,pagina:any){
+    return this.http
+    .get('http://'+this.ip_server+':8069/Visitador/UltimosPedidos?id_visitador='+id_usuario+'&pagina='+pagina
+    , {responseType: 'json'});
+  }
+
+  cargarMisPedidosBusqueda(id_usuario:any,busqueda:any){
+    return this.http
+    .get('http://'+this.ip_server+':8069/Visitador/PedidosVisitador?id_visitador='+id_usuario+'&busqueda='+busqueda
     , {responseType: 'json'});
   }
 

@@ -45,12 +45,19 @@ export class ModalPage implements OnInit {
   }
 
   async accederPicking(){
+    let navigationExtras: NavigationExtras;
     console.log("Accedediendo a " + this.claveAcceso);
     const closeModal: string = "Modal Closed";
     await this.modalController.dismiss(closeModal);
-    let navigationExtras: NavigationExtras = {
-      queryParams: { 'claveAcceso': this.claveAcceso }
-    };
+    if(this.facturas["Secuencial"].startsWith("FCNT")){
+      navigationExtras=  {
+        queryParams: { 'id_factura': this.facturas["IdFactura"] }
+      };
+    } else {
+      navigationExtras= {
+        queryParams: { 'claveAcceso': this.claveAcceso }
+      };
+    }
     this.navCtrl.navigateForward(['/tabs/tab3'], navigationExtras);
   }
 
